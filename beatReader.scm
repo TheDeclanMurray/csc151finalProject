@@ -1,4 +1,3 @@
-
 (import music)
 
 ; The Following are the modifiable elements of our program
@@ -6,7 +5,7 @@
 (define grid-height 3)
 (define documentName "csc151finalProject/noteDocument.txt")
 (define repetitions 2)
-(define volume 110)
+(define volume 120)
 (define ln (dur 1 8))
 
 ;;; (constructRow array start length) -> list?
@@ -34,10 +33,24 @@
             [_ (cons (constructRow array (* grid-width (- grid-height row)) grid-width) 
                     (constructGrid array (- row 1)))])))
 
+;;; (makePercNote n) -> music?
+;;;     n : integer?, a MIDI note value
+;;; Creates a percussion note with volume volume and duration ln, defined as global variables,
+;;; and MIDI value n. 
+(define makePercNote
+    (lambda (n)
+        (mod (dynamics volume) (mod percussion (note n ln)))))
 
-(define highHat (mod (dynamics volume) (mod percussion (note 44 ln))))
-(define snareDrum (mod (dynamics volume) (mod percussion (note 37 ln))))
-(define bassDrum (mod (dynamics volume) (mod percussion (note 35 ln))))
+(define pedalHighHat (makePercNote 44))
+(define snareDrum (makePercNote 38))
+(define bassDrum (makePercNote 35))
+(define rideCymbal (makePercNote 51))
+(define lowFloorTom (makePercNote 41))
+(define highFloorTom (makePercNote 43))
+(define highBongo (makePercNote 60))
+(define lowBongo (makePercNote 61))
+
+
 
 ;;; (activateNote val) -> music?
 ;;;   val : integer?
@@ -46,9 +59,15 @@
     (lambda (val)
         (match val
             [0 (rest ln)]
-            [1 highHat]
+            [1 pedalHighHat]   
             [2 snareDrum]
             [3 bassDrum]
+            [4 rideCymbal]
+            [5 lowFloorTom]
+            [6 highFloorTom]
+            [7 highBongo]
+            [8 lowBongo]
+
             [other "Room for Expansion"])))
 
 ;;; (activateLine line lineNum) -> music?
@@ -89,3 +108,12 @@
 beat
 
 "Everything Finished Running"
+
+pedalHighHat
+snareDrum
+bassDrum
+rideCymbal
+lowFloorTom
+highFloorTom
+highBongo
+lowBongo
