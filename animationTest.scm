@@ -1,9 +1,11 @@
 (import canvas)
-; (import image)
 
 
 (define width 300)
 (define height 100)
+(define grid-width 10)
+(define grid-height 3)
+
 (define cords (vector (/ width 8) (/ height 2)))
 (define canv (canvas width height))
 (define backgroundColor "gray")
@@ -31,7 +33,6 @@
             ; (vector-set! canv 0 (canvas width height))
             (circle canv (getX) (getY) 20 "solid" "red")
         ) 
-         
     )
 ) 
 
@@ -46,6 +47,10 @@
 
 (animate-with drawFrame)
 ; (circle canv (getX) (getY) 20 "solid" "green")
+
+; (define onClick
+;     (lambda (x y)
+;         ()))
 
 
 canv
