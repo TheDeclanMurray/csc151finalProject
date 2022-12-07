@@ -59,17 +59,12 @@
   (define animation-testing
     (lambda (t)
       (if (> (getLastFrame) t)
-        (circle c2 30 (- height 30) 10 "solid" "red")
+        void
         
         (begin
-          (setLastFrame (+ t 1000))
+          (setLastFrame (+ t 500))
           (reset c2)
-          (make-rectangles (randomVec 20) c2)
-            ; (make-rectangles-2 testVec c2)
-          (circle c2 30 (- height 30) 10 "solid" "blue"))
-        ))
-    ; (circle c2 (getX)(getY) 20 "solid" "red")
-    )
+          (make-rectangles (randomVec 20) c2)))))
   
   (animate-with animation-testing)
   c2
