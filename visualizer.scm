@@ -40,7 +40,7 @@
 ;;; 2 pixels. Each rectangle has width 23 and height of the corresponding element in vec.
 (define makeVisualizer
   (lambda (vec canv)
-    (let ([count (vector 1)])
+    (let ([count (vector 0)])
       (vector-map
         (lambda (h)
           (begin

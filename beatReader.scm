@@ -67,7 +67,6 @@
             [6 highFloorTom]
             [7 highBongo]
             [8 lowBongo]
-
             [other "Room for Expansion"])))
 
 ;;; (activateLine line lineNum) -> music?
